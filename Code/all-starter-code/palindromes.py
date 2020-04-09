@@ -6,7 +6,11 @@ import string
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 
-
+def cleanup_text(text):
+    symbols = " ?.,-_';:!@#$%&"
+    for symbol in symbols:
+        text = text.replace(symbol, "")
+    return text
 
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
@@ -14,20 +18,21 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str), 'input is not a string: {}'.format(text)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
+    # return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def is_palindrome_iterative(text):
-    # TODO: implement the is_palindrome function iteratively here
+    text = cleanup_text(text).lower()
+
     reversed = text[::-1]
     return text == reversed
+
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
 
     if left == None:
         left = 0
