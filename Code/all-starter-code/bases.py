@@ -23,7 +23,7 @@ def decode(digits, base):
         decoded += base**i * string.printable.index(num)
 
     return decoded
-
+       
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
     number: int -- integer representation of number (in base 10)

@@ -1,23 +1,34 @@
 #!python
 
+"""
+ANNOTATE FUNCTIONS WITH TIME AND SPACE COMPLEXITY!!!!!
+
+"""
+
+
+
+
 def linear_search(array, item):
     """return the first index of item in array or None if item is not found"""
-    # implement linear_search_iterative and linear_search_recursive below, then
-    # change this to call your implementation to verify it passes all tests
+
     return linear_search_iterative(array, item)
     # return linear_search_recursive(array, item)
 
 
 def linear_search_iterative(array, item):
+    """Time complexity: O(n) because you iterate through n amount of items in array
+        Space Complexity: O(n) because there are n amount of items"""
     # loop over all array values until item is found
-    for index, value in enumerate(array):
-        if item == value:
-            return index  # found
-    return None  # not found
+    for index, value in enumerate(array): #O(n)
+        if item == value:               #O(1)
+            return index  # found       O(1)
+    return None  # not found            O(1)
 
 
 def linear_search_recursive(array, item, index=0):
-    # TODO: implement linear search recursively here
+    """Time complexity: O(n) because you are returning the function continuously until index equals to nth-item
+    """
+
     if len(array) <= index:
         return index
 
@@ -25,26 +36,24 @@ def linear_search_recursive(array, item, index=0):
         return index
     else:
         return linear_search_recursive(array, item, index + 1)
-    # once implemented, change linear_search to call linear_search_recursive
-    # to verify that your recursive implementation passes all tests
 
 
 def binary_search(array, item):
     """return the index of item in sorted array or None if item is not found"""
-    # implement binary_search_iterative and binary_search_recursive below, then
-    # change this to call your implementation to verify it passes all tests
+
     return binary_search_iterative(array, item)
     # return binary_search_recursive(array, item)
 
 
 def binary_search_iterative(array, item):
-    # TODO: implement binary search iteratively here
+    """Time Complexity: O(log*n) because you are constantly dividing the length of array by 2 until array length is 1
+        Space Complexity: O(1) """
     left, right = 0, len(array) - 1
 
     if len(array) == 0:
         return None
 
-    while left <= right:
+    while left <=  right:
         middle = left + (right - left) // 2
 
         if item == array[middle]:
@@ -57,12 +66,10 @@ def binary_search_iterative(array, item):
             
     return None
 
-    
-    # once implemented, change binary_search to call binary_search_iterative
-    # to verify that your iterative implementation passes all tests
-
 
 def binary_search_recursive(array, item, left=None, right=None):
+    """Time Complexity: O(log*n)
+        Space Complexity: 0(log*n) recursion call stack space"""
     # TODO: implement binary search recursively here
     if left is None and right is None:
         left, right = 0, len(array) - 1
@@ -78,5 +85,5 @@ def binary_search_recursive(array, item, left=None, right=None):
         return binary_search_recursive(array, item, middle + 1, right)
     else:
         return binary_search_recursive(array, item, left, middle - 1)
-    # once implemented, change binary_search to call binary_search_recursive
-    # to verify that your recursive implementation passes all tests
+
+

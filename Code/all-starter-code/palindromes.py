@@ -7,6 +7,7 @@ import string
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 
 
+
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
     backwards, ignoring punctuation, whitespace, and letter casing."""
@@ -19,14 +20,34 @@ def is_palindrome(text):
 
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
-    pass
+    reversed = text[::-1]
+    return text == reversed
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
 
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
-    pass
+
+    if left == None:
+        left = 0
+        symbols = " $%&?!'.,;:-_"
+        for symbol in symbols:
+            text = text.replace(symbol, "")
+        right = len(text) - 1
+        
+    if left >= right:
+        return True
+
+    if len(text) < 1:
+        return True
+    
+
+    if left <= right and right < len(text):
+        if text[left].lower() != text[right].lower():
+            return False
+        return is_palindrome_recursive(text, left + 1, right - 1)
+
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
 
