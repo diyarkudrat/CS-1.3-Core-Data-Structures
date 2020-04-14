@@ -25,11 +25,27 @@ def is_palindrome(text):
 def is_palindrome_iterative(text):
     text = cleanup_text(text).lower()
 
-    reverse_str = ""
-    for i in text:
-        reverse_str = i + reverse_str
+    left_index = 0
+    right_index = len(text) - 1
 
-    return reverse_str == text
+    while left_index < right_index:
+        if text[left_index] != text[right_index]:
+            return False
+        left_index += 1
+        right_index += 1
+
+    return True
+    
+    # reverse_str = ""
+    # for i in text:
+    #     reverse_str = i + reverse_str
+
+    # return reverse_str == text
+
+    
+    # reversed = text[::-1]
+    # return text == reversed
+
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
 
