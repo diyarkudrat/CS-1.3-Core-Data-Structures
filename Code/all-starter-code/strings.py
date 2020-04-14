@@ -1,4 +1,6 @@
 #!python
+from utils import time_it
+
 
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
@@ -8,7 +10,7 @@ def contains(text, pattern):
     return pattern in text
     
 
-
+@time_it
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
     or None if not found."""
@@ -22,7 +24,7 @@ def find_index(text, pattern):
             return i
     return None
 
-
+@time_it
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
     or an empty list if not found."""
@@ -47,23 +49,25 @@ def test_string_algorithms(text, pattern):
     print('find_all_indexes({!r}, {!r}) => {}'.format(text, pattern, indexes))
 
 
-def main():
-    """Read command-line arguments and test string searching algorithms."""
-    import sys
-    args = sys.argv[1:]  # Ignore script file name
-    if len(args) == 2:
-        text = args[0]
-        pattern = args[1]
-        test_string_algorithms(text, pattern)
-    else:
-        script = sys.argv[0]
-        print('Usage: {} text pattern'.format(script))
-        print('Searches for occurrences of pattern in text')
-        print("\nExample: {} 'abra cadabra' 'abra'".format(script))
-        print("contains('abra cadabra', 'abra') => True")
-        print("find_index('abra cadabra', 'abra') => 0")
-        print("find_all_indexes('abra cadabra', 'abra') => [0, 8]")
+# def main():
+#     """Read command-line arguments and test string searching algorithms."""
+#     import sys
+#     args = sys.argv[1:]  # Ignore script file name
+#     if len(args) == 2:
+#         text = args[0]
+#         pattern = args[1]
+#         test_string_algorithms(text, pattern)
+#     else:
+#         script = sys.argv[0]
+#         print('Usage: {} text pattern'.format(script))
+#         print('Searches for occurrences of pattern in text')
+#         print("\nExample: {} 'abra cadabra' 'abra'".format(script))
+#         print("contains('abra cadabra', 'abra') => True")
+#         print("find_index('abra cadabra', 'abra') => 0")
+#         print("find_all_indexes('abra cadabra', 'abra') => [0, 8]")
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
+
+print(find_index('bananas', 'nas'))
