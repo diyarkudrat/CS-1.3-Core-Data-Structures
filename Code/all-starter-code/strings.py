@@ -70,4 +70,4 @@ def test_string_algorithms(text, pattern):
 # if __name__ == '__main__':
 #     main()
 
-print(find_index('bananas', 'nas'))
+print(find_index('abcd', 'bc'))
