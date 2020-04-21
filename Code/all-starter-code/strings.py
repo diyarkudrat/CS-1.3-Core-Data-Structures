@@ -18,8 +18,8 @@ def find_index(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
 
 
-    # For each index, check if the substring from i to len(pattern) + i equals to given pattern. If so, return the index 
-    for i in range(0, (len(text))):
+    # For each index, check if the substring from i to len(pattern) + i equals to given pattern. If so, return the first index, or i.
+    for i in range(0, len(text)):
         if text[i:(i + len(pattern))] == pattern:
             return i
     return None
@@ -70,4 +70,4 @@ def test_string_algorithms(text, pattern):
 # if __name__ == '__main__':
 #     main()
 
-print(find_index('abcd', 'bc'))
+print(find_all_indexes('abcdbc', 'bc'))
